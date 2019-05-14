@@ -58,7 +58,7 @@ namespace LedWallPong {
      * Steers your pong bat
      * @param: direction: direction of control
      */
-    //% block="stuur de Pong Bat"
+    //% block="stuur de Pong Bat naar $direction"
     //% group=LedWallPong
     export function controlBat(direction: Direction): void {
         let dirstr = 'A';
