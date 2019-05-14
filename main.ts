@@ -25,7 +25,7 @@ namespace LedWallCustom {
 
 
     /**
-     * Initialize the LedWall
+     * Initialize the LedWall tool
      */
     //% block
     //% group=LedWall
