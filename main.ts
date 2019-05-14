@@ -32,7 +32,7 @@ namespace LedWallPong {
     export function startLedWall(): void {
         radio.setGroup(0);
         radio.onReceivedString(function (receivedString: string) {
-            if (receivedString.includes("" + control.deviceSerialNumber())) { // this is me 
+            if (receivedString.includes("" + control.deviceSerialNumber())) { // this is me
                 let idx = receivedString.indexOf(":")
                 let myscore: string = receivedString.substr(idx + 1, receivedString.length - idx)
                 control.raiseEvent(667, parseInt(myscore))
@@ -43,10 +43,10 @@ namespace LedWallPong {
     /**
      * On score update block.
      */
-    //% block="wanneer score $receivedString wordt geupdate"
+    //% block="wanneer score $score wordt geupdate"
     //% draggableParameters
     //% group=LedWallPong
-    export function onScoreUpdate(cb: (receivedString: string) => void) {
+    export function onScoreUpdate(cb: (score: string) => void) {
         control.onEvent(EVENT_UPDATE_SCORE, 0, function () {
             cb("" + control.eventValue())
         })
