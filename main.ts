@@ -71,7 +71,7 @@ namespace LedWallPong {
     /**
      * Start the game
      */
-    //% block="start/reset pong"
+    //% block="start/reset pong spel"
     //% group=LedWallPong
     export function startGame(): void {
         radio.sendString(control.deviceSerialNumber() + ":reset");
