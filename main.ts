@@ -14,7 +14,7 @@ enum Direction {
  * Custom blocks
  */
 //% weight=100 color=#0fbc11 icon=""
-namespace LedWallCustom {
+namespace LedWallPong {
 
     // ============================ Constants
     let EVENT_UPDATE_SCORE: number = 667
@@ -27,8 +27,8 @@ namespace LedWallCustom {
     /**
      * Initialize the LedWall tool
      */
-    //% block
-    //% group=LedWall
+    //% block="setup Led Wall"
+    //% group=LedWallPong
     export function startLedWall(): void {
         radio.setGroup(0);
         radio.onReceivedString(function (receivedString: string) {
@@ -43,9 +43,9 @@ namespace LedWallCustom {
     /**
      * On score update block.
      */
-    //% block="on score $receivedString update event"
+    //% block="wanneer score $receivedString wordt geupdate"
     //% draggableParameters
-    //% group=LedWall
+    //% group=LedWallPong
     export function onScoreUpdate(cb: (receivedString: string) => void) {
         control.onEvent(EVENT_UPDATE_SCORE, 0, function () {
             cb("" + control.eventValue())
@@ -58,8 +58,8 @@ namespace LedWallCustom {
      * Steers your pong bat
      * @param: direction: direction of control
      */
-    //% block
-    //% group=LedWall
+    //% block="stuur de Pong Bat"
+    //% group=LedWallPong
     export function controlBat(direction: Direction): void {
         let dirstr = 'A';
         if (direction == Direction.Down) {
@@ -71,8 +71,8 @@ namespace LedWallCustom {
     /**
      * Start the game
      */
-    //% block
-    //% group=LedWall
+    //% block="start/reset pong"
+    //% group=LedWallPong
     export function startGame(): void {
         radio.sendString(control.deviceSerialNumber() + ":reset");
         basic.showString("Starting game")
