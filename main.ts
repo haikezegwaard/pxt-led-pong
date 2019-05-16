@@ -56,16 +56,16 @@ namespace LedWallPong {
         })
     }
 
-    /**
-     * On win game block.
-     */
-    //% block="wanneer spel gewonnen"    
-    //% group=LedWallPong
-    export function onGameWin(cb: () => void) {
-        control.onEvent(EVENT_WIN, 0, function () {
-            cb()
-        })
-    }
+    // /**
+    //  * On win game block.
+    //  */
+    // //% block="wanneer spel gewonnen"    
+    // //% group=LedWallPong
+    // export function onGameWin(cb: () => void) {
+    //     control.onEvent(EVENT_WIN, 0, function () {
+    //         cb()
+    //     })
+    // }
 
 
 
