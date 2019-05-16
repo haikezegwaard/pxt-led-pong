@@ -35,9 +35,9 @@ namespace LedWallPong {
             if (receivedString.includes("" + control.deviceSerialNumber())) { // this is me
                 let idx = receivedString.indexOf(":")
                 let myscore: string = receivedString.substr(idx + 1, receivedString.length - idx)
-                if(myscore.includes("win")){
+                if (myscore.includes("win")) {
                     control.raiseEvent(EVENT_WIN, 777)
-                }else{
+                } else {
                     control.raiseEvent(EVENT_UPDATE_SCORE, parseInt(myscore))
                 }
             }
