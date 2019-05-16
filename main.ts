@@ -3,7 +3,7 @@
  * Read more at https://makecode.microbit.org/blocks/custom
  */
 
-enum Direction {
+enum MyDirection {
     //% block="omhoog"
     Up = 0,
     //% block="omlaag"
@@ -35,7 +35,11 @@ namespace LedWallPong {
             if (receivedString.includes("" + control.deviceSerialNumber())) { // this is me 
                 let idx = receivedString.indexOf(":")
                 let myscore: string = receivedString.substr(idx + 1, receivedString.length - idx)
-                control.raiseEvent(667, parseInt(myscore))
+                if(myscore.includes("win")){
+                    control.raiseEvent(EVENT_WIN, 777)
+                }else{
+                    control.raiseEvent(EVENT_UPDATE_SCORE, parseInt(myscore))
+                }
             }
         })
     }
@@ -52,6 +56,19 @@ namespace LedWallPong {
         })
     }
 
+    /**
+     * On win game block.
+     */
+    //% block="wanneer spel gewonnen"    
+    //% group=LedWallPong
+    export function onGameWin(cb: () => void) {
+        control.onEvent(EVENT_UPDATE_SCORE, 0, function () {
+            cb()
+        })
+    }
+
+
+
     // ======================== The rest
 
     /**
@@ -60,9 +77,9 @@ namespace LedWallPong {
      */
     //% block="stuur de Pong Bat"
     //% group=LedWallPong
-    export function controlBat(direction: Direction): void {
+    export function controlBat(direction: MyDirection): void {
         let dirstr = 'A';
-        if (direction == Direction.Down) {
+        if (direction == MyDirection.Down) {
             dirstr = 'B';
         }
         radio.sendString(control.deviceSerialNumber() + ":" + dirstr);
